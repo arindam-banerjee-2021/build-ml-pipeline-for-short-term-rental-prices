@@ -1,41 +1,32 @@
-name: download_file
+name: train_random_forest
 conda_env: conda.yml
 
 entry_points:
   main:
     parameters:
-
       trainval_artifact:
-        description: Train dataset
-        type: string
-
+        description: Train + validation dataset artifact from W&B
+        type: str
       val_size:
-        description: Size of the validation split. Fraction of the dataset, or number of items
-        type: string
-
+        description: Fraction of the trainval set held out for validation
+        type: float
       random_seed:
-        description: Seed for the random number generator. Use this for reproducibility
-        type: string
+        description: Random seed for reproducibility
+        type: int
         default: 42
-
       stratify_by:
-        description: Column to use for stratification (if any)
-        type: string
-        default: 'none'
-
+        description: Column used to stratify the train/val split ("none" to disable)
+        type: str
+        default: "none"
       rf_config:
-        description: Random forest configuration. A path to a JSON file with the configuration that will
-                     be passed to the scikit-learn constructor for RandomForestRegressor.
-        type: string
-
+        description: Path to a JSON file with the Random Forest hyperparameters
+        type: str
       max_tfidf_features:
-        description: Maximum number of words to consider for the TFIDF
-        type: string
-
+        description: Maximum number of TF-IDF features to extract from the "name" column
+        type: int
       output_artifact:
-        description: Name for the output artifact
-        type: string
-
+        description: Name for the exported model artifact
+        type: str
     command: >-
       python run.py --trainval_artifact {trainval_artifact} \
                     --val_size {val_size} \
