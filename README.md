@@ -154,4 +154,4 @@ If it fails on `test_proper_boundaries`, that's expected. Fix `src/basic_cleanin
 
 MIT — See original repo for license details.
 
-- **Weights & Biases Project:** https://wandb.ai/arindam-b21-accenture/nyc_airbnb
+- **Weights & Biases Project:** https://wandb.ai/arindam-b21-accenture/nyc_airbnb_v2
